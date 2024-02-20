@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1064342324873",
+    "project_id": "newdb-a6c6c",
+    "storage_bucket": "newdb-a6c6c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064342324873:android:5253983ba42e0bccc86858",
+        "android_client_info": {
+          "package_name": "com.example.sakshi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDASNCBo1zEW4xAW7v_a-FZMir41gglglM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

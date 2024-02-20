@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashBoardActivity">
+
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/constraint"
+      android:layout_marginTop="20dp">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:id="@+id/heading"
+        android:text="Be Safe"
+        android:textSize="40sp"
+        android:textColor="@color/purple_200"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/womenimg"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:id="@+id/womenimg"
+        android:src="@drawable/women2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toEndOf="@id/heading"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:id="@+id/row1"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/womenimg">
+
+      <androidx.cardview.widget.CardView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:id="@+id/alertCardView"
+          android:layout_margin="10dp"
+          android:layout_weight="1"
+          app:cardElevation="20dp"
+          app:cardCornerRadius="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/clothingName"
+              android:text="Alert"
+              android:textSize="20sp"
+              android:textColor="@color/purple_200"
+              android:layout_marginTop="10dp"
+              android:layout_centerHorizontal="true"
+              android:layout_below="@+id/alert"/>
+
+          <ImageView
+              android:layout_width="70dp"
+              android:layout_height="70dp"
+              android:id="@+id/alert"
+              android:src="@drawable/sos"
+              android:contentDescription="SOS Icon"
+              android:layout_marginTop="15dp"
+              android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+      </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:id="@+id/addContactsCardView"
+          android:layout_margin="10dp"
+          android:layout_weight="1"
+          app:cardElevation="20dp"
+          app:cardCornerRadius="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/elecName"
+              android:text="Add Contacts"
+              android:textSize="20sp"
+              android:textColor="@color/purple_200"
+              android:layout_marginTop="10dp"
+              android:layout_centerHorizontal="true"
+              android:layout_below="@+id/addcontacts"/>
+
+          <ImageView
+              android:layout_width="70dp"
+              android:layout_height="70dp"
+              android:id="@+id/addcontacts"
+              android:src="@drawable/addcontacts"
+              android:layout_marginTop="15dp"
+              android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+      </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:id="@+id/row2"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/row1">
+      <androidx.cardview.widget.CardView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_margin="10dp"
+          android:layout_weight="1"
+          app:cardElevation="20dp"
+          app:cardCornerRadius="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/homeName"
+              android:text="Click and Send"
+              android:textSize="20sp"
+              android:textColor="@color/purple_200"
+              android:layout_marginTop="10dp"
+              android:layout_centerHorizontal="true"
+              android:layout_below="@+id/sendimage"/>
+          <ImageView
+              android:layout_width="70dp"
+              android:layout_height="70dp"
+              android:id="@+id/sendimage"
+              android:src="@drawable/camera"
+              android:layout_marginTop="15dp"
+              android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+      </androidx.cardview.widget.CardView>
+      <androidx.cardview.widget.CardView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_margin="10dp"
+          android:layout_weight="1"
+          app:cardElevation="20dp"
+          app:cardCornerRadius="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/way"
+              android:text="Find way"
+              android:textSize="20sp"
+              android:textColor="@color/purple_200"
+              android:layout_marginTop="10dp"
+              android:layout_centerHorizontal="true"
+              android:layout_below="@+id/location"/>
+          <ImageView
+              android:layout_width="70dp"
+              android:layout_height="70dp"
+              android:id="@+id/location"
+              android:src="@drawable/tracklocation"
+              android:layout_marginTop="15dp"
+              android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+      </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:id="@+id/row3"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/row2">
+      <androidx.cardview.widget.CardView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_margin="10dp"
+          android:layout_weight="1"
+          app:cardElevation="20dp"
+          app:cardCornerRadius="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/pharmName"
+              android:text="Book A Ride"
+              android:textSize="20sp"
+              android:textColor="@color/purple_200"
+              android:layout_marginTop="10dp"
+              android:layout_centerHorizontal="true"
+              android:layout_below="@+id/pharmImage"/>
+
+          <ImageView
+              android:id="@+id/pharmImage"
+              android:layout_width="108dp"
+              android:layout_height="79dp"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="15dp"
+              android:src="@drawable/bookride" />
+        </RelativeLayout>
+      </androidx.cardview.widget.CardView>
+      <androidx.cardview.widget.CardView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_margin="10dp"
+          android:layout_weight="1"
+          app:cardElevation="20dp"
+          app:cardCornerRadius="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/voice"
+              android:text="Send Voice note"
+              android:textSize="20sp"
+              android:textColor="@color/purple_200"
+
+              android:layout_marginTop="10dp"
+              android:layout_centerHorizontal="true"
+              android:layout_below="@+id/voiceImage"/>
+          <ImageView
+              android:layout_width="70dp"
+              android:layout_height="70dp"
+              android:id="@+id/voiceImage"
+              android:src="@drawable/voice"
+              android:layout_marginTop="15dp"
+              android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+      </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  </ScrollView>
