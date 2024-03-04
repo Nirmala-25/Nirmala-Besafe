@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/nav_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
-        android:textColor="@color/blue"/>
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="158dp"
+        android:text="Setting"
+        android:textColor="@color/blue"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/nav_settings"
+        android:layout_marginTop="20dp"
+        android:padding="16dp">
+
+        <!-- Example: Safety Feature Switch -->
+        <Switch
+            android:id="@+id/switchSafetyFeature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enable Safety Feature"
+            android:padding="16dp"/>
+
+        <!-- Example: Settings SeekBar -->
+        <SeekBar
+            android:id="@+id/seekBarSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="50"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <CheckBox
+            android:id="@+id/checkboxSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Checkbox Setting"
+            android:padding="16dp"/>
+
+        <!-- Add more settings UI components as needed -->
+
+    </LinearLayout>
 
 </RelativeLayout>

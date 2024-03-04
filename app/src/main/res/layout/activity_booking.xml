@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".BookingActivity">
+
+    <ImageView
+        android:id="@+id/bookrideimg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bookride">
+
+    </ImageView>
+
+    <Button
+        android:id="@+id/pickUpLocationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bookrideimg"
+        android:text="Select Pick-up Location" />
+
+    <Button
+        android:id="@+id/dropOffLocationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pickUpLocationButton"
+        android:layout_marginTop="16dp"
+        android:text="Select Drop-off Location" />
+
+    <Button
+        android:id="@+id/bookRideButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dropOffLocationButton"
+        android:layout_marginTop="16dp"
+        android:text="Book Ride" />
+
+</RelativeLayout>

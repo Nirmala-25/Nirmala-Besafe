@@ -59,7 +59,6 @@
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="15sp" />
-
             <EditText
                 android:id="@+id/editTextContact"
                 android:layout_width="match_parent"
@@ -73,13 +72,13 @@
                 android:textColorHint="@color/white"
                 android:textSize="15sp" />
 
-
             <Button
                 android:id="@+id/buttonRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="18dp"
+                android:layout_gravity="center"
                 android:text="Register"
                 android:textSize="20sp" />
 
@@ -88,6 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="18dp"
+                android:layout_gravity="center"
                 android:text="Login HERE"
                 android:textSize="20sp" />
 
@@ -95,29 +95,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:layout_gravity="center"
                 android:text="or login with"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/buttonotp"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:padding="15dp"
+                android:layout_gravity="center"
+                android:text="GET OTP"
+                android:textSize="15sp" />
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/google" />
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="16dp"
-                    android:src="@drawable/lk" />
-            </LinearLayout>
+                android:orientation="horizontal"/>
 
         </LinearLayout>
     </ScrollView>

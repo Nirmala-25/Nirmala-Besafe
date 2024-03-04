@@ -16,12 +16,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.ktx.Firebase;
-
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText editTextUsername, editTextEmail, editTextPassword,editTextContact;
-    Button buttonRegister,buttonlogin;
+    EditText editTextUsername, editTextEmail, editTextPassword, editTextContact;
+    Button buttonRegister, buttonLogin;
     FirebaseDatabase database;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
@@ -30,57 +28,62 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextContact = findViewById(R.id.editTextContact);
         buttonRegister = findViewById(R.id.buttonRegister);
-        buttonlogin = findViewById(R.id.buttonlogin);
-        database=FirebaseDatabase.getInstance();
-        databaseReference=database.getReference("Users");
-        firebaseAuth=FirebaseAuth.getInstance();
+        buttonLogin = findViewById(R.id.buttonlogin);
+
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Users");
+        firebaseAuth = FirebaseAuth.getInstance();
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = editTextUsername.getText().toString();
-                String email = editTextEmail.getText().toString();
-                String password = editTextPassword.getText().toString();
-                String contact = editTextContact.getText().toString();
+                registerUser();
+            }
+        });
 
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to start LoginActivity
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
-                if (username.isEmpty() || email.isEmpty() || password.isEmpty() || contact.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Here you can add code to perform registration, like sending data to a server
-                    // For simplicity, just showing a toast message
-                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+    private void registerUser() {
+        String username = editTextUsername.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
+        String contact = editTextContact.getText().toString();
+
+        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || contact.isEmpty()) {
+            Toast.makeText(RegisterActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+        } else {
+            // Perform user registration
+            firebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful())
-                            {
-                                Userinfo userinfo=new Userinfo(email,password,contact);
-                                databaseReference.child(username).setValue(userinfo);
-                                Toast.makeText(RegisterActivity.this, "Authentication success", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(RegisterActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                // Registration successful, add user info to database
+                                String userId = firebaseAuth.getCurrentUser().getUid(); // Get the UID of the newly registered user
+                                Userinfo userinfo = new Userinfo(username, email, password, contact);
+                                databaseReference.child(userId).setValue(userinfo); // Use UID as the key in the database
+                                Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // If registration fails, display a message to the user.
+                                Toast.makeText(RegisterActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-
-                }
-            }
-        });
-        buttonlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Create an Intent to start SecondActivity
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-
         }
     }
+
+}

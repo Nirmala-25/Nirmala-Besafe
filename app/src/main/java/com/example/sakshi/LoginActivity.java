@@ -15,12 +15,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
-    //TextView register;
+    TextView textViewRegister;
     FirebaseAuth firebaseAuth;
+    DatabaseReference usersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +37,10 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
-        //register=findViewById(R.id.regonlogin);
+        textViewRegister = findViewById(R.id.regonlogin);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        usersRef = FirebaseDatabase.getInstance().getReference("Users");
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,10 +58,29 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         // Login successful
-                                        Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, SplashActivity.class));
-                                        finish();
-                                        // Proceed to the next activity or perform desired actions
+                                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                                        if (user != null) {
+                                            String userId = user.getUid();
+                                            // Retrieve username from database
+                                            usersRef.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                    if (dataSnapshot.exists()) {
+                                                        String username = dataSnapshot.child("username").getValue(String.class);
+                                                        Toast.makeText(LoginActivity.this, "Logged in as " + username, Toast.LENGTH_SHORT).show();
+                                                        // Proceed to the next activity or perform desired actions
+                                                        startActivity(new Intent(LoginActivity.this, SplashActivity.class));
+                                                        finish();
+                                                    }
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                    // Handle database error
+                                                    Toast.makeText(LoginActivity.this, "Failed to retrieve username", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
                                     } else {
                                         // Login failed
                                         Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
@@ -63,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        TextView textViewRegister = findViewById(R.id.regonlogin);
+
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

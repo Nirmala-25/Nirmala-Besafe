@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_profile.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- Profile Picture -->
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/profile_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:scaleType="centerCrop"/>
+
+    <!-- Full Name -->
+    <EditText
+        android:id="@+id/fullNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:layout_below="@id/profileImageView"
+        android:layout_marginTop="16dp"
+        android:inputType="textPersonName"
+        android:padding="16dp"/>
+
+    <!-- Address -->
+    <EditText
+        android:id="@+id/addressEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Address"
+        android:layout_below="@id/fullNameEditText"
+        android:layout_marginTop="16dp"
+        android:inputType="textPostalAddress"
+        android:padding="16dp"/>
+
+    <!-- State -->
+    <EditText
+        android:id="@+id/stateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="State"
+        android:layout_below="@id/addressEditText"
+        android:layout_marginTop="16dp"
+        android:inputType="text"
+        android:padding="16dp"/>
+
+    <!-- Country -->
+    <EditText
+        android:id="@+id/countryEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Country"
+        android:layout_below="@id/stateEditText"
+        android:layout_marginTop="16dp"
+        android:inputType="text"
+        android:padding="16dp"/>
+
+    <!-- Blood Group -->
+    <EditText
+        android:id="@+id/bloodGroupEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Blood Group"
+        android:layout_below="@id/countryEditText"
+        android:layout_marginTop="16dp"
+        android:inputType="text"
+        android:padding="16dp"/>
+
+    <!-- Nearest Police Station -->
+    <EditText
+        android:id="@+id/policeStationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nearest Police Station"
+        android:layout_below="@id/bloodGroupEditText"
+        android:layout_marginTop="16dp"
+        android:inputType="text"
+        android:padding="16dp"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_below="@id/policeStationEditText"
+        android:layout_marginTop="24dp"/>
+</RelativeLayout>
